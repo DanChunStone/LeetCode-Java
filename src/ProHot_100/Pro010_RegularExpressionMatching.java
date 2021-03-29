@@ -7,7 +7,7 @@ package ProHot_100;
 public class Pro010_RegularExpressionMatching {
 
     public static void main(String[] args) {
-        System.out.println(new Solution().isMatch("aab", "c*a*b"));
+        System.out.println(new Solution2().isMatch("aa", "a"));
     }
 
     /**
@@ -35,7 +35,7 @@ public class Pro010_RegularExpressionMatching {
             }
             if (startP == endP) // s没有匹配完，但是p匹配完了
                 return false;
-            
+
             if (chars[start] == charsP[startP] || charsP[startP] == '.') {
                 if (startP + 1 < endP && charsP[startP + 1] == '*') {
                     return isMatch(chars, start + 1, end, charsP, startP, endP) || isMatch(chars, start, end, charsP, startP + 2, endP);
@@ -45,8 +45,49 @@ public class Pro010_RegularExpressionMatching {
             } else if (startP + 1 < endP && charsP[startP + 1] == '*') {
                 return isMatch(chars, start, end, charsP, startP + 2, endP);
             }
-            
             return false;
+        }
+    }
+
+    /**
+     * 解法二：动态规划
+     */
+    static class Solution2 {
+        public boolean isMatch(String s, String p) {
+            if (s == null || p == null)
+                return false;
+
+            int m = s.length();
+            int n = p.length();
+            boolean[][] result = new boolean[s.length() + 1][p.length() + 1];
+            result[0][0] = true;
+            for (int i = 1; i <= n; i++) {
+                if (i > 1 && p.charAt(i - 1) == '*') {
+                    result[0][i] = result[0][i - 2];
+                } else {
+                    result[0][i] = false;
+                }
+            }
+            for (int i = 1; i <= m; i++) {
+                result[i][0] = false;
+            }
+
+            for (int i = 1; i <= m; i++) {
+                for (int j = 1; j <= n; j++) {
+                    if (s.charAt(i - 1) == p.charAt(j - 1) || '.' == p.charAt(j - 1)) {
+                        result[i][j] = result[i - 1][j - 1];
+                    } else if ('*' == p.charAt(j - 1)) {
+                        if (s.charAt(i - 1) == p.charAt(j - 2) || '.' == p.charAt(j - 2)) {
+                            result[i][j] = result[i - 1][j] || result[i - 1][j - 1] || result[i][j - 1] || result[i][j - 2];
+                        } else {
+                            result[i][j] = result[i][j - 2];
+                        }
+                    } else {
+                        result[i][j] = false;
+                    }
+                }
+            }
+            return result[m][n];
         }
     }
 }
