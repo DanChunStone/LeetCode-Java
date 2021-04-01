@@ -1,4 +1,4 @@
-package Problem;
+package ProHot_100;
 
 import java.util.Arrays;
 

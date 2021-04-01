@@ -1,11 +1,11 @@
-package Problem;
+package ProHot_100;
 
 import helper.ListNode;
 
-public class Pro92_Reverse_Linked_List_II {
+public class Pro092_Reverse_Linked_List_II {
     public static void main(String[] args) {
 //        System.out.println(new Pro92_Reverse_Linked_List_II().reverseBetween(ListNode.build(new int[]{1,2,3,4,5}), 1, 1).toString());
-        System.out.println(new Pro92_Reverse_Linked_List_II().reverseBetween(ListNode.build(new int[]{5}), 1, 1).toString());
+        System.out.println(new Pro092_Reverse_Linked_List_II().reverseBetween(ListNode.build(new int[]{5}), 1, 1).toString());
     }
 
     public ListNode reverseBetween(ListNode head, int left, int right) {
