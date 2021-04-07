@@ -29,7 +29,7 @@ public class Pro21_MergeTwoSortedLists {
         }
         cur = head;
 
-        while (p != null || q != null) {
+        while (true) {
             if (p == null) {
                 cur.next = q;
                 break;
