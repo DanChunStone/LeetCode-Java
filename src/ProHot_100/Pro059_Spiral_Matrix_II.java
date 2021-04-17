@@ -6,9 +6,9 @@ import java.util.Arrays;
  * @author shilijun
  * @date 2021/3/18 15:59
  */
-public class Pro59_Spiral_Matrix_II {
+public class Pro059_Spiral_Matrix_II {
     public static void main(String[] args) {
-        System.out.println(Arrays.deepToString(new Pro59_Spiral_Matrix_II().generateMatrix(3)));
+        System.out.println(Arrays.deepToString(new Pro059_Spiral_Matrix_II().generateMatrix(3)));
     }
 
     public int[][] generateMatrix(int n) {

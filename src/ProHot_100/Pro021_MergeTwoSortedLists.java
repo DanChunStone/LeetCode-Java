@@ -6,7 +6,7 @@ import helper.ListNode;
  * @author shilijun
  * @date 2020/11/21 13:21
  */
-public class Pro21_MergeTwoSortedLists {
+public class Pro021_MergeTwoSortedLists {
     public static void main(String[] args) {
 
     }
@@ -29,7 +29,7 @@ public class Pro21_MergeTwoSortedLists {
         }
         cur = head;
 
-        while (p != null || q != null) {
+        while (true) {
             if (p == null) {
                 cur.next = q;
                 break;
