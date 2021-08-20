@@ -1,5 +1,8 @@
 package helper;
 
+import java.util.Deque;
+import java.util.LinkedList;
+
 /**
  * @author shilijun
  * @date 2020/11/24 9:56
@@ -35,4 +38,26 @@ public class TreeNode {
 //        }
 //        return head;
 //    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("[");
+
+        Deque<TreeNode> deque = new LinkedList<>();
+        deque.add(this);
+        while (!deque.isEmpty()) {
+            TreeNode treeNode = deque.poll();
+            stringBuilder.append(treeNode.val).append(" ");
+            if (treeNode.left != null) {
+                deque.add(treeNode.left);
+            }
+            if (treeNode.right != null) {
+                deque.add(treeNode.right);
+            }
+        }
+
+        stringBuilder.append("]");
+        return stringBuilder.toString();
+    }
 }
